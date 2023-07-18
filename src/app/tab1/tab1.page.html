@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title> Tab 1 </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,6 +10,20 @@
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
-
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <ion-searchbar [(ngModel)]="search"></ion-searchbar>
+  <ion-button (click)="onClick()" expand="block" fill="clear" shape="round">
+   buscar
+  </ion-button>
+  <ion-button  (click)="irAFavoritos()"  expand="block" fill="clear" shape="round">
+    ir a favoritos
+   </ion-button>
+  <ion-list>
+    <ion-item *ngFor="let cancion of canciones">
+      <ion-label> {{cancion.title}} </ion-label>
+      <ion-label> {{cancion.artist.name}} </ion-label>
+      <ion-label> {{cancion.preview}} </ion-label>
+      <ion-img [src]="cancion.artist.picture"></ion-img>
+      <ion-icon (click)="add(cancion)" slot="end" name="heart"></ion-icon>
+    </ion-item>
+  </ion-list>
 </ion-content>
